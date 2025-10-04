@@ -45,8 +45,8 @@ const AuthForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
-      ).then((res) => {
+        })
+        .then((res) => {
         setIsLoading(false);
         if (res.ok) {
            return res.json();
@@ -63,7 +63,6 @@ const AuthForm = () => {
       .catch((err) => {
         alert(err);
       });
-    
   };
 
   return (
