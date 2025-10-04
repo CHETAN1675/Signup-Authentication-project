@@ -28,10 +28,10 @@ const AuthForm = () => {
     let url;
         if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWfhosGO8TjFz1RimdMo1nwxtmh_My-Fw";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWdbYezlB4B6chk9YUR0q1pvCTycIHeYw";
     } else {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWfhosGO8TjFz1RimdMo1nwxtmh_My-Fw";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWdbYezlB4B6chk9YUR0q1pvCTycIHeYw";
     }
 
         
