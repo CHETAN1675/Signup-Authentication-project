@@ -19,22 +19,20 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-     if (!enteredEmail || !enteredEmail.includes('@')) {
-    alert('Please enter a valid email address.');
-    return;
-  }
-
-  if (!enteredPassword || enteredPassword.trim().length < 6) {
-    alert('Password must be at least 6 characters long.');
-    return;
-  }
 
     setIsLoading(true);
-    if (isLogin) {
+
+    let url;
+        if (isLogin) {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWfhosGO8TjFz1RimdMo1nwxtmh_My-Fw";
     } else {
-      fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWfhosGO8TjFz1RimdMo1nwxtmh_My-Fw",
-        {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWfhosGO8TjFz1RimdMo1nwxtmh_My-Fw";
+    }
+
+        
+      fetch(url,{
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,
@@ -48,16 +46,15 @@ const AuthForm = () => {
       ).then((res) => {
         setIsLoading(false);
         if (res.ok) {
-          alert("Account Created Successfully");
+           return res.json();
         } else {
           return res.json().then((data) => {
-            let errorMessage = "EMAIL_EXISTS!";
-
-            alert(errorMessage);
+            let errorMessage = "AUTHENTICATION FAILED!";
+             throw new Error(errorMessage);
           });
         }
       });
-    }
+    
   };
 
   return (
